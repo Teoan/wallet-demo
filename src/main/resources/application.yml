@@ -1,0 +1,48 @@
+server:
+  servlet:
+    context-path: /
+  port: 8032
+spring:
+  application:
+    name: wallet-demo
+  main:
+    allow-bean-definition-overriding: true
+  jpa:
+    database: mysql
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    jdbc-url: jdbc:mysql://mysql:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2b8&nullCatalogMeansCurrent=true
+    url: jdbc:mysql://mysql:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2b8
+    username: root
+    password: p@ssw0rd
+  redis:
+    host: redis
+    port: 6379
+    password: East@123!@#
+    database: 6
+    redisson:
+      config: |
+        singleServerConfig:
+          idleConnectionTimeout: 10000
+          connectTimeout: 10000
+          timeout: 3000
+          retryAttempts: 3
+          retryInterval: 1500
+          address: redis://redis:6379
+          password: East@123!@#
+          clientName: null
+          keepAlive: true
+          tcpNoDelay: false
+          database: 6
+        threads: 16
+        nettyThreads: 32
+        codec: !<org.redisson.codec.JsonJacksonCodec> {}
+        transportMode: "NIO"
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
